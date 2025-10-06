@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home · Topic 6-3</title>
+
+  <!-- Font & app styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <div class="brand">Topic6-3</div>
+      <nav>
+        <a th:href="@{/}">Home</a>
+        <a th:href="@{/orders}">Orders</a>
+        <a th:href="@{/login}">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Welcome 👋</h1>
+      <p>Choose where you want to go.</p>
+      <div class="actions">
+        <a class="btn primary" th:href="@{/orders}">View Orders</a>
+        <a class="btn" th:href="@{/service/getjson}" target="_blank">Get JSON</a>
+        <a class="btn" th:href="@{/service/getxml}"  target="_blank">Get XML</a>
+      </div>
+    </section>
+
+    <section class="grid">
+      <a class="card" th:href="@{/login}">
+        <h3>Login</h3>
+        <p>Sign in to access secured features.</p>
+      </a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© <span th:text="${#dates.format(#dates.createNow(),'yyyy')}"></span> Your App</div>
+  </footer>
+</body>
+</html>

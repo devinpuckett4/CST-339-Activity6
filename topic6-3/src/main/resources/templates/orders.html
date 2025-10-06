@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>My Orders</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}">
+</head>
+<body>
+  <h1>My Orders</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Order #</th>
+        <th>Product</th>
+        <th>Qty</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="o : ${orders}">
+        <td th:text="${o.orderNumber}">A100</td>
+        <td th:text="${o.product}">Coffee Beans</td>
+        <td th:text="${o.quantity}">2</td>
+        <!-- price is BigDecimal; format to 2 decimals -->
+        <td th:text="${#numbers.formatDecimal(o.price, 1, 2)}">14.99</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a th:href="@{/}">Home</a></p>
+</body>
+</html>

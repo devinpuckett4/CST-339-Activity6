@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+  <meta charset="UTF-8"/>
+  <title th:text="${title}">App</title>
+</head>
+<body>
+  <header th:fragment="header">
+    <h1>My App</h1>
+  </header>
+
+  <footer th:fragment="footer">
+    <small>&copy; 2025</small>
+  </footer>
+</body>
+</html>

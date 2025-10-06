@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Orders</title></head>
+<body>
+  <h1>Orders</h1>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <thead>
+      <tr><th>ID</th><th>Order #</th><th>Product</th><th>Price</th><th>Qty</th></tr>
+    </thead>
+    <tbody>
+      <tr th:each="o : ">
+        <td th:text="\">1</td>
+        <td th:text="\">ABC</td>
+        <td th:text="\">Widget</td>
+        <td th:text="\">9.99</td>
+        <td th:text="\">2</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

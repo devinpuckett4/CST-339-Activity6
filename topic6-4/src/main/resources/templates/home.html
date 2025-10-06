@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${title}">Home</title>
+  <link rel="stylesheet" th:href="@{/css/app.css}" />
+</head>
+<body>
+  <h1>Home</h1>
+  <ul>
+    <li><a th:href="@{/orders/display}">Orders</a></li>
+    <li>REST: <code>/getjson</code> and <code>/getxml</code></li>
+  </ul>
+  <p><a th:href="@{/login}">Login</a></p>
+</body>
+</html>

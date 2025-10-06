@@ -1,0 +1,74 @@
+package com.gcu.topic2.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
+import com.gcu.topic2.business.UserBusinessService;
+
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig {
+
+    private final UserBusinessService userDetails;
+
+    public SecurityConfig(UserBusinessService userDetails) {
+        this.userDetails = userDetails;
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public DaoAuthenticationProvider authProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setUserDetailsService(userDetails);
+        provider.setPasswordEncoder(passwordEncoder());
+        return provider;
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            // Simple: disable CSRF for this app
+            .csrf(csrf -> csrf.disable())
+
+            .authorizeHttpRequests(auth -> auth
+                // Public pages & static assets
+                .requestMatchers("/", "/home", "/login", "/css/**", "/js/**", "/images/**").permitAll()
+                // Secure REST endpoints (works for either /service/** or the legacy /getjson,/getxml)
+                .requestMatchers("/service/**", "/getjson", "/getxml").authenticated()
+                // Anything else requires auth
+                .anyRequest().authenticated()
+            )
+
+            // Basic auth for REST clients (e.g., Postman)
+            .httpBasic(Customizer.withDefaults())
+
+            // Keep form login for the website
+            .formLogin(fl -> fl
+                .loginPage("/login")
+                .permitAll()
+            )
+
+            // Clean logout back to login screen
+            .logout(lo -> lo
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
+            )
+
+            // Use our user details + password encoder
+            .authenticationProvider(authProvider());
+
+        return http.build();
+    }
+}

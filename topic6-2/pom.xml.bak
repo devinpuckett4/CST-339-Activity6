@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>topic6-2</artifactId>
+    <version>3.5.5</version>
+    <relativePath />
+  </parent>
+  <groupId>com.gcu</groupId>
+  <artifactId>topic6-2</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>topic6-2</name>
+  <description>Demo project for Spring Boot</description>
+  <properties>
+    <java.version>17</java.version>
+  </properties>
+  <dependencies>
+    <!-- Web + Views -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>topic6-2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>topic6-2</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>nz.net.ultraq.thymeleaf</groupId>
+      <artifactId>topic6-2</artifactId>
+    </dependency>
+    <!-- Validation  -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>topic6-2</artifactId>
+    </dependency>
+    <!-- XML support (for /getxml) -->
+    <dependency>
+      <groupId>jakarta.xml.bind</groupId>
+      <artifactId>topic6-2</artifactId>
+      <version>4.0.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.jaxb</groupId>
+      <artifactId>topic6-2</artifactId>
+      <version>4.0.4</version>
+    </dependency>
+    <!-- âœ… MongoDB  -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>topic6-2</artifactId>
+    </dependency>
+    <!-- Tests -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>topic6-2</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <finalName>cst339activity</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>topic6-2</artifactId>
+        <configuration>
+          <mainClass>com.gcu.topic2.Topic51Application</mainClass>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
